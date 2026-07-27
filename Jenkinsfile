@@ -2,27 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone') {
+        stage('Checkout') {
             steps {
-                echo 'Cloning Repository...'
+                checkout scm
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building Application...'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running Tests...'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying Application...'
+                sh 'chmod +x mvnw'
+                sh './mvnw clean package'
             }
         }
     }

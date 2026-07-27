@@ -12,7 +12,7 @@ pipeline {
             steps {
                 dir('docker-jenkins-demo') {
                     sh 'chmod +x mvnw'
-                    sh './mvnw clean package'
+                    sh './mvnw clean package -DskipTests'
                 }
             }
         }

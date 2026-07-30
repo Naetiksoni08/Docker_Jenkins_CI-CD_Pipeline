@@ -34,7 +34,6 @@ pipeline {
                 '''
             }
         }
-
         stage('Docker Run') {
             steps {
                 sh 'docker run -d -p 8081:8080 --name docker-jenkins-demo-container docker-jenkins-demo'

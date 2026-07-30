@@ -26,6 +26,15 @@ pipeline {
             }
         }
 
+        stage('Remove Old Container') {
+            steps {
+                sh '''
+                docker stop docker-jenkins-demo-container || true
+                docker rm docker-jenkins-demo-container || true
+                '''
+            }
+        }
+
         stage('Docker Run') {
             steps {
                 sh 'docker run -d -p 8081:8080 --name docker-jenkins-demo-container docker-jenkins-demo'
